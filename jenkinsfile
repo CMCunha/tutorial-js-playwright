@@ -1,4 +1,7 @@
 pipeline {
+  parameters {
+    string(name: 'testExecs', defaultValue: '')
+  }
   agent {
     docker { 
       image 'mcr.microsoft.com/playwright:v1.27.0-focal'
@@ -33,7 +36,6 @@ pipeline {
     stage('Extract Variable from log'){
       steps {
         script {
-          env.testExecs = 'Empty'
           def logContent = Jenkins.getInstance().getItemByFullName(env.JOB_NAME).getBuildByNumber(Integer.parseInt(env.BUILD_NUMBER)).logFile.text
           env.testExecs = (logContent =~ /XRAY_TEST_EXECS:.*/).findAll().first()
           echo testExecs
@@ -43,7 +45,7 @@ pipeline {
     stage('Using variable from another stage') {
       steps {
         script {
-          echo ${env.testExecs}
+          echo "${env.testExecs}"
         }
       }
     }
