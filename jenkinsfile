@@ -39,5 +39,12 @@ pipeline {
          }
       }
     }
+    stage('Using variable from another stage') {
+      steps {
+        script {
+          echo ${testExecs}
+        }
+      }
+    }
   }
 }
