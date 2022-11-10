@@ -6,7 +6,9 @@ pipeline {
   }
   stages {
     stage('install playwright') {
-      
+      steps {
+        
+      }
     }
     stage('help') {
       steps {
