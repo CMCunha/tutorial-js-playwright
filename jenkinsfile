@@ -30,5 +30,12 @@ pipeline {
         step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'xray-report.xml', importToSameExecution: 'true', projectKey: 'EWB', testExecKey: 'EWB-278', fixVersion: '1.2', revision: '131', serverInstance: '3bd01273-d481-46d1-8826-b862eff38bcb'])
       }
     }
+    stage('Extract Variable from log'){
+      steps {
+        def logContent = Jenkins.getInstance().getItemByFullName(env.JOB_NAME).getBuildByNumber(Integer.parseInt(env.BUILD_NUMBER)).logFile.text
+        def testExecs = logContent =~ /XRAY_TEST_EXECS:.*/
+        echo testExecs
+      }
+    }
   }
 }
