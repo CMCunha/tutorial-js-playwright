@@ -34,7 +34,7 @@ pipeline {
       steps {
         script {
           def logContent = Jenkins.getInstance().getItemByFullName(env.JOB_NAME).getBuildByNumber(Integer.parseInt(env.BUILD_NUMBER)).logFile.text
-          def testExecs = (logContent =~ /XRAY_TEST_EXECS:.*$/)[0][1]
+          def testExecs = (logContent =~ /XRAY_TEST_EXECS:.*$/).findAll()*.first()
           echo testExecs
          }
       }
