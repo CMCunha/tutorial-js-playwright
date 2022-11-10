@@ -32,9 +32,11 @@ pipeline {
     }
     stage('Extract Variable from log'){
       steps {
-        def logContent = Jenkins.getInstance().getItemByFullName(env.JOB_NAME).getBuildByNumber(Integer.parseInt(env.BUILD_NUMBER)).logFile.text
-        def testExecs = logContent =~ /XRAY_TEST_EXECS:.*/
-        echo testExecs
+        script {
+          def logContent = Jenkins.getInstance().getItemByFullName(env.JOB_NAME).getBuildByNumber(Integer.parseInt(env.BUILD_NUMBER)).logFile.text
+          def testExecs = logContent =~ /XRAY_TEST_EXECS:.*/
+          echo testExecs
+         }
       }
     }
   }
