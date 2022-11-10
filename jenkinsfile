@@ -33,8 +33,9 @@ pipeline {
     stage('Extract Variable from log'){
       steps {
         script {
+          env.testExecs = 'Empty'
           def logContent = Jenkins.getInstance().getItemByFullName(env.JOB_NAME).getBuildByNumber(Integer.parseInt(env.BUILD_NUMBER)).logFile.text
-          def testExecs = (logContent =~ /XRAY_TEST_EXECS:.*/).findAll().first()
+          env.testExecs = (logContent =~ /XRAY_TEST_EXECS:.*/).findAll().first()
           echo testExecs
          }
       }
@@ -42,7 +43,7 @@ pipeline {
     stage('Using variable from another stage') {
       steps {
         script {
-          echo ${testExecs}
+          echo ${env.testExecs}
         }
       }
     }
