@@ -1,6 +1,7 @@
 pipeline {
   parameters {
-    string(name: 'testExecs', defaultValue: '')
+    string(name: 'testExecs', defaultValue: ''),
+    string(name: 'projectKey', defaultValue: '')
   }
   agent {
     docker { 
@@ -30,7 +31,7 @@ pipeline {
     }
     stage('Import results to Xray') {
       steps {
-        step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'xray-report.xml', importToSameExecution: 'true', projectKey: 'EWB', testExecKey: 'EWB-278', fixVersion: '1.2', revision: '131', serverInstance: '3bd01273-d481-46d1-8826-b862eff38bcb'])
+        step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'xray-report.xml', importToSameExecution: 'true', projectKey: params.projectKey, testExecKey: params.testExecs, fixVersion: '1.2', revision: '131', serverInstance: '10be58cc-2776-49a7-be60-b615dc99f4c0'])
       }
     }
     stage('Extract Variable from log'){
