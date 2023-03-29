@@ -25,7 +25,7 @@ pipeline {
     stage('test') {
       steps {
         sh '''
-          PLAYWRIGHT_JUNIT_OUTPUT_NAME=junit.xml npx playwright test
+          PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test
         '''
       }
     }
