@@ -1,7 +1,8 @@
 pipeline {
-  parameters {
+  parameters {[
     string(name: 'testExecs', defaultValue: ''),
     string(name: 'projectKey', defaultValue: '')
+    ]
   }
   agent {
     docker { 
