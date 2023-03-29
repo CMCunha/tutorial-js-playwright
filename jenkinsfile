@@ -70,7 +70,7 @@ pipeline {
   post 
   {
     always {
-      junit '/var/jenkins_home/workspace/Playwright/**/*.xml'
+      junit '*.xml'
     }
   }
 }
