@@ -8,7 +8,18 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
+  workflow_call:
+    inputs:
+      testPlanKey:
+        description: 'Test Plan ID from Xray'
+        default: ''
+        required: true
+        type: string
+      projectKey:
+        description: 'Project ID from Xray'
+        default: ''
+        required: true
+        type: string
 jobs:
   build:
 
@@ -38,6 +49,6 @@ jobs:
          xrayBaseUrl: ${{ secrets.JIRA_BASEURL }}
          testFormat: "junit"
          testPaths: "**/xray-report.xml"
-         testPlanKey: "${{ secrets.JIRA_TEST_PLAN_KEY }}"
-         projectKey: "${{ secrets.JIRA_PROJECT_KEY }}"
+         testPlanKey: "${{ inputs.testPlanKey }}"
+         projectKey: "${{ inputs.projectKey }}"
          testEnvironments: "NODE_${{ matrix.node-version }}"
