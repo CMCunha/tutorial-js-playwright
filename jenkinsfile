@@ -18,16 +18,18 @@ pipeline {
         '''
       }
     }
-    stage('help') {
-      steps {
-        sh 'npx playwright test --help'
-      }
-    }
+    //stage('help') {
+    //  steps {
+    //    sh 'npx playwright test --help'
+    //  }
+    //}
     stage('test') {
       steps {
-        sh '''
-          PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test
-        '''
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+          sh '''
+            PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test
+          '''
+        }
       }
     }
     stage('Import results to Xray') {
