@@ -27,7 +27,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 15.x]
+        node-version: [15.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -38,6 +38,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: |
         npm install
+        npx playwright install 
     - run: |
         PLAYWRIGHT_JUNIT_OUTPUT_NAME=junit.xml npx playwright test --reporter=junit,line
     - name: "Import results to Xray"
