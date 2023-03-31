@@ -10,8 +10,8 @@ on:
     branches: [ main ]
   workflow_dispatch:
     inputs:
-      testPlanKey:
-        description: 'Test Plan ID from Xray'
+      testExecKey:
+        description: 'Test Exec ID from Xray'
         default: ''
         required: true
         type: string
@@ -50,6 +50,6 @@ jobs:
          xrayBaseUrl: ${{ secrets.JIRA_BASEURL }}
          testFormat: "junit"
          testPaths: "**/xray-report.xml"
-         testPlanKey: "${{ inputs.testPlanKey }}"
+         testExecKey: "${{ inputs.testExecKey }}"
          projectKey: "${{ inputs.projectKey }}"
          testEnvironments: "NODE_${{ matrix.node-version }}"
