@@ -40,7 +40,7 @@ jobs:
         npm install
         npx playwright install 
     - run: |
-        PLAYWRIGHT_JUNIT_OUTPUT_NAME=junit.xml npx playwright test --reporter=junit,line
+        PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test --reporter=junit,line
     - name: "Import results to Xray"
       uses: mikepenz/xray-action@v2.3.0
       with:
