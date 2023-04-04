@@ -39,8 +39,9 @@ jobs:
     - run: |
         npm install
         npx playwright install 
-    - run: |
-        continue-on-error: true
+    - name: Run tests
+      continue-on-error: true
+      run: |  
         PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test --reporter=junit,line
     - name: "Import results to Xray"
       uses: mikepenz/xray-action@v2.3.0
