@@ -45,10 +45,10 @@ jobs:
     - name: Run tests
       continue-on-error: true
       run: |  
-        PLAYWRIGHT_JUNIT_OUTPUT_NAME=xrayreport.xml npx playwright test
+        PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test
     - name: Output results file
       run: |
-        cat xrayreport.xml
+        cat xray-report.xml
     - name: "Import results to Xray"
       uses: mikepenz/xray-action@v2.3.0
       with:
@@ -57,7 +57,7 @@ jobs:
          xrayCloud: "false"
          xrayBaseUrl: ${{ secrets.JIRA_BASEURL }}
          testFormat: "junit"
-         testPaths: "**/xrayreport.xml"
+         testPaths: "**/xray-report.xml"
          testExecKey: "${{ inputs.testExecKey }}"
          projectKey: "${{ inputs.projectKey }}"
          testEnvironments: "NODE_${{ matrix.node-version }}"
