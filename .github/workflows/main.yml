@@ -45,6 +45,9 @@ jobs:
       continue-on-error: true
       run: |  
         PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test --reporter=junit,line
+    - name: Output results file
+      run: |
+        cat xray-report.xml
     - name: "Import results to Xray"
       uses: mikepenz/xray-action@v2.3.0
       with:
