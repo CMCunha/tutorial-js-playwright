@@ -40,11 +40,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: |
         npm install
+        npm i -D @playwright/test
         npx playwright install 
     - name: Run tests
       continue-on-error: true
       run: |  
-        PLAYWRIGHT_JUNIT_OUTPUT_NAME=xrayreport.xml npx playwright test --reporter=junit,line
+        PLAYWRIGHT_JUNIT_OUTPUT_NAME=xrayreport.xml npx playwright test
     - name: Output results file
       run: |
         cat xrayreport.xml
