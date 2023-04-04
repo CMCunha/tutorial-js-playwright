@@ -32,6 +32,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Output Inputs
+      run: echo "${{ toJSON(github.event.inputs) }}"
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
