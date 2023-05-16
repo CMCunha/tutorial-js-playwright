@@ -38,10 +38,10 @@ pipeline {
           if (params.testPlanKey.isEmpty()) {
             if (params.testExecs.isEmpty()) {
               echo "1"
-              step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'xray-report.xml', importToSameExecution: 'true', projectKey: params.projectKey, fixVersion: '1.2', revision: '131', serverInstance: '10be58cc-2776-49a7-be60-b615dc99f4c0'])
+              step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'xray-report.xml', importToSameExecution: 'true', projectKey: 'COM', fixVersion: '1.2', revision: '131', serverInstance: '10be58cc-2776-49a7-be60-b615dc99f4c0'])
             } else {
               echo "2"
-              step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'xray-report.xml', importToSameExecution: 'true', projectKey: params.projectKey, testExecKey: params.testExecs, fixVersion: '1.2', revision: '131', serverInstance: '10be58cc-2776-49a7-be60-b615dc99f4c0'])
+              step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'xray-report.xml', importToSameExecution: 'true', projectKey: 'COM', testExecKey: params.testExecs, fixVersion: '1.2', revision: '131', serverInstance: '10be58cc-2776-49a7-be60-b615dc99f4c0'])
             }
           } else {
             if (params.testExecs.isEmpty()) {
