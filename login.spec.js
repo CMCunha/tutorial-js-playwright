@@ -10,9 +10,9 @@ test.describe("Login validations", () => {
         const name = await loginPage.getInnerText();
 
         //Adding Xray properties
-        testInfo.annotations.push({ type: 'test_key', description: 'COM-17' });
+        //testInfo.annotations.push({ type: 'test_key', description: 'COM-17' });
         testInfo.annotations.push({ type: 'test_summary', description: 'Successful login.' });
-        testInfo.annotations.push({ type: 'requirements', description: 'COM-1' });
+        testInfo.annotations.push({ type: 'requirements', description: 'EWB-432' });
         testInfo.annotations.push({ type: 'test_description', description: 'Validate that the login is successful.' });
 
         // Capture a screenshot and attach it.
@@ -30,9 +30,9 @@ test.describe("Login validations", () => {
         const name = await loginPage.getInnerText();
 
         //Adding Xray properties
-        testInfo.annotations.push({ type: 'test_key', description: 'COM-9' });
+        //testInfo.annotations.push({ type: 'test_key', description: 'COM-9' });
         testInfo.annotations.push({ type: 'test_summary', description: 'Unsuccessful login.' });
-        testInfo.annotations.push({ type: 'requirements', description: 'COM-1' });
+        testInfo.annotations.push({ type: 'requirements', description: 'EWB-432' });
         testInfo.annotations.push({ type: 'test_description', description: 'Validate that the login is unsuccessful.' });
 
         // Capture a screenshot and attach it.
