@@ -43,13 +43,6 @@ pipeline {
     //     }
     //  }
     //}
-    //stage('Using variable from another stage') {
-    //  steps {
-    //    script {
-    //      echo "${env.testExecs}"
-    //    }
-    //  }
-    //}
   }
   post 
   {
