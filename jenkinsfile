@@ -30,7 +30,8 @@ pipeline {
     stage('Import results to Xray') {
       steps {
         script{
-              step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'xray-report.xml', importToSameExecution: 'true', projectKey: 'EWB', testPlanKey: 'EWB-607', fixVersion: '1.2', revision: '131', serverInstance: '5dc39737-1def-4ff3-a9c4-f52af25f9a8d'])
+              //step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'xray-report.xml', importToSameExecution: 'true', projectKey: 'EWB', testPlanKey: 'EWB-607', fixVersion: '1.2', revision: '131', serverInstance: '5dc39737-1def-4ff3-a9c4-f52af25f9a8d'])
+              step([$class: 'XrayImportBuilder', endpointName: '/junit', importFilePath: 'xray-report.xml', importToSameExecution: 'true', projectKey: 'COM', testPlanKey: 'COM-7', fixVersion: '1.2', revision: '131', serverInstance: '5b637012-9ba3-4005-afbe-7f11a19df03f'])
         }  
       }
     }
