@@ -57,6 +57,6 @@ jobs:
          password: "${{ secrets.XRAYCLOUD_CLIENT_SECRET }}"
          xrayCloud: "true"
          testFormat: "junit"
-         testPaths: "*.xml"
+         testPaths: "**/xray-report.xml"
          testPlanKey: "${{ inputs.testPlanKey }}"
          projectKey: "${{ inputs.projectKey }}"
