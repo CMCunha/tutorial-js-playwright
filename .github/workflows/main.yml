@@ -10,8 +10,8 @@ on:
     branches: [ main ]
   workflow_dispatch:
     inputs:
-      testExecKey:
-        description: 'Test Exec ID from Xray'
+      testPlanKey:
+        description: 'Test Plan ID from Xray'
         default: ''
         required: true
         type: string
@@ -58,5 +58,5 @@ jobs:
          xrayCloud: "true"
          testFormat: "junit"
          testPaths: "*.xml"
-         testPlanKey: "${{ secrets.XRAYCLOUD_TEST_PLAN_KEY }}"
-         projectKey: "${{ secrets.XRAYCLOUD_PROJECT_KEY }}"
+         testPlanKey: "${{ inputs.testPlanKey }}"
+         projectKey: "${{ inputs.projectKey }}"
